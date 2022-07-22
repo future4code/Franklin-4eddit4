@@ -1,15 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-//import { goToLogin } from '../routes/coodinator';
+import {goToLoginPage} from '../routes/coodinator';
 
+// function to Protect specific pages
 const useProtectedPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      goToLogin(navigate);
+      goToLoginPage(navigate);
     }
   }, [navigate]);
 };
 
-export { useProtectedPage };
+export default useProtectedPage;
