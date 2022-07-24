@@ -1,12 +1,13 @@
-import React from "react";
+import React from 'react';
+import logo from '../assets/logo.png';
 
 function Header() {
   return (
-      <div>
-        <img src='###'/>
-        <p>Entrar</p>
-      </div>
-  )
+    <div>
+      <img src={logo} />
+      <p>Entrar</p>
+    </div>
+  );
 }
 
 export default Header;

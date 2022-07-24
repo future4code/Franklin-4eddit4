@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from '../pages/LoginPage/LoginPage'
-import SignUpPage from '../pages/SignupPage/SignUpPage'
-import PostPage from '../pages/PostPage/PostPage'
+import LoginPage from '../pages/LoginPage/LoginPage';
+import SignUpPage from '../pages/SignupPage/SignupPage';
+import PostPage from '../pages/PostPage/PostPage';
 import FeedPage from '../pages/FeedPage/FeedPage';
 
 const Router = () => {
@@ -18,4 +18,4 @@ const Router = () => {
   );
 };
 
-export default Router
+export default Router;
