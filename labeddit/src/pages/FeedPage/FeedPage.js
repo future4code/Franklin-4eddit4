@@ -8,9 +8,13 @@ import { BASE_URL } from '../../constants/urls';
 function FeedPage() {
   const [posts, setPosts] = useState([]);
   const [textArea, setTextArea] = useState('');
+  const [userPost, setUserPost] = useState('');
 
   const handleTextArea = event => {
     setTextArea(event.target.value);
+  };
+  const handleUserPost = event => {
+    setUserPost(event.target.value);
   };
 
   const token = localStorage.getItem('token');
@@ -29,12 +33,14 @@ function FeedPage() {
     axios
       .post(
         `${BASE_URL}/posts`,
-        { title: 'Z maguinho do Piauí', body: textArea },
+        { title: userPost, body: textArea },
         { headers: { Authorization: token } }
       )
       .then(response => {
-        console.log('Post criado com sucesso');
+        alert('Post criado com sucesso');
+        setUserPost('');
         setTextArea('');
+        getPosts()
       })
       .catch(error => console.log('error'));
   };
@@ -42,11 +48,12 @@ function FeedPage() {
   return (
     <div>
       <Header />
+      <input value={userPost} placeholder='autor' onChange={handleUserPost}/>
       <textarea
         value={textArea}
         rows="4"
         cols="50"
-        label="Escreva seu post..."
+        placeholder="Escreva seu post..."
         onChange={handleTextArea}
       ></textarea>
       <button onClick={createPost}>Postar</button>
