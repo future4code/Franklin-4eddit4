@@ -6,6 +6,8 @@ import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
 import useForm from '../../hooks/useForm';
 import { BASE_URL } from '../../constants/urls';
 import logo from '../../assets/logo.png';
+import { Title, Logo, Form, InputArea, BtnButton, Divider, BtnSignUp, ContaineLogin} from './styled';
+
 
 function LoginPage() {
   // useUnprotectedPage();
@@ -29,33 +31,36 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <img src={logo} />
+    <ContaineLogin>
+      <Logo src={logo} />
+      <Title>LabEddit</Title>
       <p>O projeto de rede social da Labenu</p>
-      <form onSubmit={onSubmitForm}>
-        <input
+      <Form onSubmit={onSubmitForm}>
+        <InputArea
           name={'email'}
           value={form.email}
           onChange={onChange}
           label={'email'}
+          placeholder={'Email'}
           type="email"
           required
         />
-        <input
+        <InputArea
           name={'password'}
           value={form.password}
           onChange={onChange}
+          placeholder={'Senha'}
           label={'senha'}
           type="password"
           required
         />
-        <button onClick={login}>Continuar</button>
-      </form>
-      <div></div>
-      <button onClick={() => goToSignupPage(navigate)} type={'submit'}>
+        <BtnButton onClick={login}>Continuar</BtnButton>
+      </Form>
+      <Divider></Divider>
+      <BtnSignUp onClick={() => goToSignupPage(navigate)} type={'submit'}>
         Crie uma conta!
-      </button>
-    </div>
+      </BtnSignUp>
+    </ContaineLogin>
   );
 }
 
