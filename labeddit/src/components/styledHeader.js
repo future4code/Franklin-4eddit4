@@ -1,26 +1,34 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const NavBar = styled.div`
-    background: #EDEDED;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: 15px;
-    padding-top: 15px;
+  background: #ededed;
+  display: flex;
+  width: 100vw;
+  height: 50px;
+  box-sizing: border-box;
+`;
 
-`
+export const LogoDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
 
 export const Logo = styled.img`
-    align-self: center;
-    margin-left: 30px;
-`
+  align-self: center;
+  height: 40px;
+  margin: 5px 0;
+`;
 export const BtnLogin = styled.button`
-    font-family: 'Noto Sans';
-    font-style: normal;
-    text-align: center;
-    color: #4088CB;
-    border: none;
-    font-size: 30px;
-    margin-right: 30px;
-`
+  font-family: 'Noto Sans', sans-serif;
+  color: #4088cb;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  position: absolute;
+  right: 0;
+  height: 50px;
+  padding-right: 29px;
+`;

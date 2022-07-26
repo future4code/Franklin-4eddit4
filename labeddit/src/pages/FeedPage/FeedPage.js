@@ -4,6 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useProtectedPage } from '../../hooks/useUnprotectedPage';
 import Header from '../../components/Header';
 import { BASE_URL } from '../../constants/urls';
+import {
+  Container,
+  TextArea,
+  BtnButton,
+  Divider,
+  Post,
+  PostContainer
+} from './styled';
 
 function FeedPage() {
   const [posts, setPosts] = useState([]);
@@ -40,28 +48,27 @@ function FeedPage() {
         alert('Post criado com sucesso');
         setUserPost('');
         setTextArea('');
-        getPosts()
+        getPosts();
       })
       .catch(error => console.log('error'));
   };
 
   return (
-    <div>
+    <Container>
       <Header />
-      <input value={userPost} placeholder='autor' onChange={handleUserPost}/>
-      <textarea
+      <TextArea
         value={textArea}
-        rows="4"
+        rows="5"
         cols="50"
         placeholder="Escreva seu post..."
         onChange={handleTextArea}
-      ></textarea>
-      <button onClick={createPost}>Postar</button>
-      <div></div>
-      <ul>
+      />
+      <BtnButton onClick={createPost}>Postar</BtnButton>
+      <Divider />
+      <PostContainer>
         {posts.map(post => {
           return (
-            <li key={post.id}>
+            <Post key={post.id}>
               <p>Enviado por: {post.title}</p>
               <p> {post.body} </p>
               <div>
@@ -75,11 +82,11 @@ function FeedPage() {
                   <p> {post.commentCount} </p>
                 </div>
               </div>
-            </li>
+            </Post>
           );
         })}
-      </ul>
-    </div>
+      </PostContainer>
+    </Container>
   );
 }
 

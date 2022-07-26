@@ -6,8 +6,17 @@ import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
 import useForm from '../../hooks/useForm';
 import { BASE_URL } from '../../constants/urls';
 import logo from '../../assets/logo.png';
-import { Title, Logo, Form, InputArea, BtnButton, Divider, BtnSignUp, ContaineLogin} from './styled';
-
+import {
+  Title,
+  Logo,
+  Form,
+  InputArea,
+  BtnButton,
+  Divider,
+  BtnSignUp,
+  ContaineLogin,
+  Text
+} from './styled';
 
 function LoginPage() {
   // useUnprotectedPage();
@@ -33,8 +42,9 @@ function LoginPage() {
   return (
     <ContaineLogin>
       <Logo src={logo} />
+
       <Title>LabEddit</Title>
-      <p>O projeto de rede social da Labenu</p>
+      <Text>O projeto de rede social da Labenu</Text>
       <Form onSubmit={onSubmitForm}>
         <InputArea
           name={'email'}
