@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useProtectedPage } from "../../hooks/useUnprotectedPage"
 import Header from "../../components/Header"
+import {BtnButton} from "./styled"
 
 function PostPage() {
     return(
@@ -12,7 +13,7 @@ function PostPage() {
                 {/*     AREA DO POST PEGO DA API     */}
             </div>
             <textarea rows="4" cols="50" label="Adicionar comentário"></textarea>
-            <button>Responder</button>
+            {/* <BtnButton onClick={signup}>Responder</BtnButton> */}
             <div></div>
             <div>
                 {/*     AREA DE COMENTARIOS PEGOS DA API     */}

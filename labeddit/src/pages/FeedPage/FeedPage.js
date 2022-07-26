@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useProtectedPage } from '../../hooks/useUnprotectedPage';
 import Header from '../../components/Header';
 import { BASE_URL } from '../../constants/urls';
+import { Divider, InputPost, BtnButton, ContainerPost, ContainerBox, FooterPost, SmallBox, Logo } from './styled';
+import up from "../../assets/up.png"
+import down from "../../assets/down.png"
+import coment from "../../assets/coment.png"
 
 function FeedPage() {
   const [posts, setPosts] = useState([]);
@@ -48,37 +52,39 @@ function FeedPage() {
   return (
     <div>
       <Header />
+      <ContainerPost>
       <input value={userPost} placeholder='autor' onChange={handleUserPost}/>
-      <textarea
+      <InputPost
         value={textArea}
         rows="4"
         cols="50"
         placeholder="Escreva seu post..."
         onChange={handleTextArea}
-      ></textarea>
-      <button onClick={createPost}>Postar</button>
-      <div></div>
-      <ul>
+      ></InputPost>
+      <BtnButton onClick={createPost}>Postar</BtnButton>
+      <Divider></Divider>
+      <div>
         {posts.map(post => {
           return (
-            <li key={post.id}>
+            <ContainerBox key={post.id}>
               <p>Enviado por: {post.title}</p>
               <p> {post.body} </p>
-              <div>
-                <div>
-                  <img src="" />
+              <FooterPost>
+                <SmallBox>
+                  <Logo src={up} />
                   <p> {post.voteSum} </p>
-                  <img src="" />
-                </div>
-                <div>
-                  <img src="" />
+                  <Logo src={down} />
+                </SmallBox>
+                <SmallBox>
+                  <Logo src={coment} />
                   <p> {post.commentCount} </p>
-                </div>
-              </div>
-            </li>
+                </SmallBox>
+              </FooterPost>
+            </ContainerBox>
           );
         })}
-      </ul>
+      </div>
+      </ContainerPost>
     </div>
   );
 }
