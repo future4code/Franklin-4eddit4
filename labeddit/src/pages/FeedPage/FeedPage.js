@@ -10,8 +10,16 @@ import {
   BtnButton,
   Divider,
   Post,
-  PostContainer
+  PostContainer,
+  SendBy,
+  BodyPost,
+  CountersDiv,
+  CountersContainer,
+  PostWriteDiv
 } from './styled';
+import arrowUp from '../../assets/arrow_up.png';
+import arrowDown from '../../assets/arrow_down.png';
+import speechBubble from '../../assets/speech_bubble.png';
 
 function FeedPage() {
   const [posts, setPosts] = useState([]);
@@ -56,32 +64,34 @@ function FeedPage() {
   return (
     <Container>
       <Header />
-      <TextArea
-        value={textArea}
-        rows="5"
-        cols="50"
-        placeholder="Escreva seu post..."
-        onChange={handleTextArea}
-      />
-      <BtnButton onClick={createPost}>Postar</BtnButton>
-      <Divider />
+      <PostWriteDiv>
+        <TextArea
+          value={textArea}
+          rows="5"
+          cols="50"
+          placeholder="Escreva seu post..."
+          onChange={handleTextArea}
+        />
+        <BtnButton onClick={createPost}>Postar</BtnButton>
+        <Divider />
+      </PostWriteDiv>
       <PostContainer>
         {posts.map(post => {
           return (
             <Post key={post.id}>
-              <p>Enviado por: {post.title}</p>
-              <p> {post.body} </p>
-              <div>
-                <div>
-                  <img src="" />
+              <SendBy>Enviado por: {post.title}</SendBy>
+              <BodyPost> {post.body} </BodyPost>
+              <CountersContainer>
+                <CountersDiv>
+                  <img src={arrowUp} />
                   <p> {post.voteSum} </p>
-                  <img src="" />
-                </div>
-                <div>
-                  <img src="" />
+                  <img src={arrowDown} />
+                </CountersDiv>
+                <CountersDiv>
+                  <img src={speechBubble} />
                   <p> {post.commentCount} </p>
-                </div>
-              </div>
+                </CountersDiv>
+              </CountersContainer>
             </Post>
           );
         })}
