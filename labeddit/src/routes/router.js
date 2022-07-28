@@ -11,7 +11,7 @@ const Router = () => {
       <Routes>
         <Route index element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/posts/:id" element={<PostPage />} />
+        <Route path="/post/:id" element={<PostPage />} />
         <Route path="/posts" element={<FeedPage />} />
       </Routes>
     </BrowserRouter>

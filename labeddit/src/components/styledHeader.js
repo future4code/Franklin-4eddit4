@@ -3,9 +3,8 @@ import styled from 'styled-components';
 export const NavBar = styled.div`
   background: #ededed;
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 50px;
-  box-sizing: border-box;
 `;
 
 export const LogoDiv = styled.div`
