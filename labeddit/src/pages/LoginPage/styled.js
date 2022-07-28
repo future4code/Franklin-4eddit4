@@ -62,6 +62,7 @@ export const BtnButton = styled.button`
   border-radius: 27px;
   border: none;
   margin: 56px 0 0 0;
+  font-weight: 700;
 `;
 
 export const BtnSignUp = styled.button`
@@ -71,6 +72,7 @@ export const BtnSignUp = styled.button`
   color: #f9b24e;
   border-radius: 27px;
   border: solid orange;
+  font-weight: 700;
 `;
 export const Divider = styled.div`
   width: 90%;

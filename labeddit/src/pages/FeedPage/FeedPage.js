@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useProtectedPage } from '../../hooks/useUnprotectedPage';
@@ -20,11 +20,15 @@ import {
 import arrowUp from '../../assets/arrow_up.png';
 import arrowDown from '../../assets/arrow_down.png';
 import speechBubble from '../../assets/speech_bubble.png';
+import { goToPostPage } from '../../routes/coordinator';
+import { GlobalContext } from '../../context/global/GlobalState';
 
 function FeedPage() {
   const [posts, setPosts] = useState([]);
   const [textArea, setTextArea] = useState('');
   const [userPost, setUserPost] = useState('');
+  const { setters } = useContext(GlobalContext);
+  const { setPost } = setters;
 
   const handleTextArea = event => {
     setTextArea(event.target.value);
@@ -34,6 +38,8 @@ function FeedPage() {
   };
 
   const token = localStorage.getItem('token');
+
+  const navigate = useNavigate();
 
   const getPosts = () => {
     axios
@@ -61,9 +67,21 @@ function FeedPage() {
       .catch(error => console.log('error'));
   };
 
+  const goToPostDetails = post => {
+    setPost({
+      username: post.username,
+      id: post.id,
+      body: post.body,
+      voteSum: post.voteSum,
+      commentCount: post.commentCount
+    });
+    goToPostPage(navigate, post.id);
+  };
+
   return (
     <Container>
       <Header />
+
       <PostWriteDiv>
         <TextArea
           value={textArea}
@@ -78,8 +96,8 @@ function FeedPage() {
       <PostContainer>
         {posts.map(post => {
           return (
-            <Post key={post.id}>
-              <SendBy>Enviado por: {post.title}</SendBy>
+            <Post key={post.id} onClick={() => goToPostDetails(post)}>
+              <SendBy>Enviado por: {post.username}</SendBy>
               <BodyPost> {post.body} </BodyPost>
               <CountersContainer>
                 <CountersDiv>
