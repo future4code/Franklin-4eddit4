@@ -18,6 +18,7 @@ export const Post = styled.li`
   text-align: left;
   padding: 10px;
   box-sizing: border-box;
+  word-wrap: break-word;
 `;
 
 export const SendBy = styled.p`
@@ -45,6 +46,14 @@ export const CountersDiv = styled.div`
   font-weight: 700;
   margin-right: 10px;
   gap: 10px;
+`;
+
+export const PostComment = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 export const Comment = styled.textarea`
@@ -78,6 +87,6 @@ export const CommentsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 `;

@@ -59,6 +59,7 @@ export const Post = styled.li`
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
+  word-wrap: break-word;
 `;
 
 export const SendBy = styled.p`

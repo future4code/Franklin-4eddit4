@@ -11,6 +11,7 @@ import {
   BodyPost,
   CountersDiv,
   CountersContainer,
+  PostComment,
   Comment,
   BtnButton,
   Divider,
@@ -22,16 +23,18 @@ import speechBubble from '../../assets/speech_bubble.png';
 import { GlobalContext } from '../../context/global/GlobalState';
 
 function PostPage() {
-  const [postComment, setPostComment] = useState([]);
-  const [comments, setComments] = useState([]);
+  const [postComment, setPostComment] = useState([]); // all comments posted
+  const [comments, setComments] = useState([]); // new comment
+
   const token = localStorage.getItem('token');
   const params = useParams();
-  console.log(params);
+
   const { state } = useContext(GlobalContext);
   const { post } = state;
 
   console.log(post);
 
+  //Get all comments from a especific post
   const getPostComment = () => {
     axios
       .get(`${BASE_URL}/posts/${params.id}/comments`, {
@@ -39,12 +42,12 @@ function PostPage() {
       })
       .then(response => {
         setPostComment(response.data);
-        console.log(response.data);
       })
       .catch(error => console.log(error));
   };
   useEffect(getPostComment, []);
 
+  // Create a new comment
   const createComment = () => {
     axios
       .post(`${BASE_URL}/posts/${params.id}/comments`, {
@@ -52,7 +55,6 @@ function PostPage() {
       })
       .then(response => {
         setComments(response.data);
-        console.log(response.data);
       })
       .catch(error => console.log(error));
   };
@@ -65,18 +67,20 @@ function PostPage() {
         <BodyPost> {post.body} </BodyPost>
         <CountersContainer>
           <CountersDiv>
-            <img src={arrowUp} />
+            <img src={arrowUp} alt="arrow up" />
             <p> {post.voteSum} </p>
-            <img src={arrowDown} />
+            <img src={arrowDown} alt="arrow down" />
           </CountersDiv>
           <CountersDiv>
-            <img src={speechBubble} />
+            <img src={speechBubble} alt="speech bubble" />
             <p> {post.commentCount} </p>
           </CountersDiv>
         </CountersContainer>
       </Post>
-      <Comment rows="4" cols="50" placeholder="Adicionar comentário" />
-      <BtnButton onClick={createComment}>Responder</BtnButton>
+      <PostComment>
+        <Comment rows="4" cols="50" placeholder="Adicionar comentário" />
+        <BtnButton onClick={createComment}>Responder</BtnButton>
+      </PostComment>
       <Divider />
       <CommentsContainer>
         {postComment.map(comment => {

@@ -27,6 +27,8 @@ function FeedPage() {
   const [posts, setPosts] = useState([]);
   const [textArea, setTextArea] = useState('');
   const [userPost, setUserPost] = useState('');
+  const [voteSum, setVoteSum] = useState('');
+
   const { setters } = useContext(GlobalContext);
   const { setPost } = setters;
 
@@ -41,6 +43,7 @@ function FeedPage() {
 
   const navigate = useNavigate();
 
+  //get all posts from the api
   const getPosts = () => {
     axios
       .get(`${BASE_URL}/posts`, { headers: { Authorization: token } })
@@ -51,6 +54,7 @@ function FeedPage() {
   };
   useEffect(getPosts, []);
 
+  //create a new post
   const createPost = () => {
     axios
       .post(
@@ -67,6 +71,7 @@ function FeedPage() {
       .catch(error => console.log('error'));
   };
 
+  //Show comments on a post
   const goToPostDetails = post => {
     setPost({
       username: post.username,
@@ -76,6 +81,40 @@ function FeedPage() {
       commentCount: post.commentCount
     });
     goToPostPage(navigate, post.id);
+  };
+
+  //Add a vote
+  const addVote = id => {
+    axios
+      .post(
+        `${BASE_URL}/posts/${id}/votes`,
+        { direction: 1 },
+        {
+          headers: { Authorization: token, ContentType: 'application/json' }
+        }
+      )
+      .then(response => {
+        console.log(response.data);
+        setVoteSum(voteSum + 1);
+      })
+      .catch(error => console.log(error));
+  };
+  useEffect(addVote, []);
+
+  //Substract a vote
+  const substractVote = id => {
+    //   axios
+    //     .post(
+    //       `${BASE_URL}/posts/${id}/votes`,
+    //       { direction: -1 },
+    //       {
+    //         headers: { Authorization: token, ContentType: 'application/json' }
+    //       }
+    //     )
+    //     .then(response => {
+    //       console.log(response.data);
+    //     })
+    //     .catch(error => console.log(error));
   };
 
   return (
@@ -96,16 +135,20 @@ function FeedPage() {
       <PostContainer>
         {posts.map(post => {
           return (
-            <Post key={post.id} onClick={() => goToPostDetails(post)}>
+            <Post key={post.id}>
               <SendBy>Enviado por: {post.username}</SendBy>
               <BodyPost> {post.body} </BodyPost>
               <CountersContainer>
                 <CountersDiv>
-                  <img src={arrowUp} />
+                  <img
+                    src={arrowUp}
+                    alt="arrowUp"
+                    onClick={() => addVote(post.id)}
+                  />
                   <p> {post.voteSum} </p>
                   <img src={arrowDown} />
                 </CountersDiv>
-                <CountersDiv>
+                <CountersDiv onClick={() => goToPostDetails(post)}>
                   <img src={speechBubble} />
                   <p> {post.commentCount} </p>
                 </CountersDiv>
