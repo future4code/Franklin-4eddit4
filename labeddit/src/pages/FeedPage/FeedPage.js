@@ -15,18 +15,21 @@ import {
   BodyPost,
   CountersDiv,
   CountersContainer,
-  PostWriteDiv
+  PostWriteDiv,
+  PostTitle
 } from './styled';
 import arrowUp from '../../assets/arrow_up.png';
 import arrowDown from '../../assets/arrow_down.png';
 import speechBubble from '../../assets/speech_bubble.png';
 import { goToPostPage } from '../../routes/coordinator';
 import { GlobalContext } from '../../context/global/GlobalState';
+import useForm from '../../hooks/useForm';
 
 function FeedPage() {
   const [posts, setPosts] = useState([]);
   const [textArea, setTextArea] = useState('');
   const [userPost, setUserPost] = useState('');
+  const [postTitle, setPostTitle] = useState('');
   const [voteSum, setVoteSum] = useState('');
 
   const { setters } = useContext(GlobalContext);
@@ -35,9 +38,10 @@ function FeedPage() {
   const handleTextArea = event => {
     setTextArea(event.target.value);
   };
-  const handleUserPost = event => {
-    setUserPost(event.target.value);
+  const handlePostTitle = event => {
+    setPostTitle(event.target.value);
   };
+  const [form, onChange, clear] = useForm({ title: '' });
 
   const token = localStorage.getItem('token');
 
@@ -59,12 +63,12 @@ function FeedPage() {
     axios
       .post(
         `${BASE_URL}/posts`,
-        { title: userPost, body: textArea },
+        { title: postTitle, body: textArea },
         { headers: { Authorization: token } }
       )
       .then(response => {
         alert('Post criado com sucesso');
-        setUserPost('');
+        setPostTitle('');
         setTextArea('');
         getPosts();
       })
@@ -122,6 +126,14 @@ function FeedPage() {
       <Header />
 
       <PostWriteDiv>
+        <PostTitle
+          name={'title'}
+          value={form.title}
+          onChange={handlePostTitle}
+          label={'title'}
+          placeholder={'Título do post'}
+          type="text"
+        />
         <TextArea
           value={textArea}
           rows="5"

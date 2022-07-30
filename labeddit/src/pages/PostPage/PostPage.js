@@ -15,24 +15,26 @@ import {
   Comment,
   BtnButton,
   Divider,
-  CommentsContainer
+  CommentsContainer,
+  CloseBtn
 } from './styled';
 import arrowUp from '../../assets/arrow_up.png';
 import arrowDown from '../../assets/arrow_down.png';
 import speechBubble from '../../assets/speech_bubble.png';
+import closeButton from '../../assets/close_button.png';
 import { GlobalContext } from '../../context/global/GlobalState';
+import { goBack } from '../../routes/coordinator';
 
 function PostPage() {
   const [postComment, setPostComment] = useState([]); // all comments posted
   const [comments, setComments] = useState([]); // new comment
 
-  const token = localStorage.getItem('token');
-  const params = useParams();
-
   const { state } = useContext(GlobalContext);
   const { post } = state;
 
-  console.log(post);
+  const token = localStorage.getItem('token');
+  const params = useParams();
+  const navigate = useNavigate();
 
   //Get all comments from a especific post
   const getPostComment = () => {
@@ -62,6 +64,11 @@ function PostPage() {
   return (
     <Container>
       <Header />
+      <CloseBtn
+        src={closeButton}
+        alt="close button"
+        onClick={() => goBack(navigate)}
+      />
       <Post key={post.id}>
         <SendBy>Enviado por: {post.username}</SendBy>
         <BodyPost> {post.body} </BodyPost>
