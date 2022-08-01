@@ -58,7 +58,7 @@ function SignUpPage() {
           name={'email'}
           value={form.email}
           onChange={onChange}
-          placeholder="E-mail"
+          placeholder="Email"
           required
         />
         <InputArea

@@ -33,7 +33,6 @@ function LoginPage() {
       .post(`${BASE_URL}/users/login`, form)
       .then(response => {
         localStorage.setItem('token', response.data.token);
-        clear();
         goToFeedPage(navigate);
       })
       .catch(error => console.log(error));
