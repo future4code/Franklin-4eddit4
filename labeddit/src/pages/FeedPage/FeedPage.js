@@ -1,7 +1,7 @@
 import { React, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useProtectedPage } from '../../hooks/useUnprotectedPage';
+import useProtectedPage from '../../hooks/useProtectedPage';
 import Header from '../../components/Header';
 import { BASE_URL } from '../../constants/urls';
 import {
@@ -26,6 +26,7 @@ import { GlobalContext } from '../../context/global/GlobalState';
 import useForm from '../../hooks/useForm';
 
 function FeedPage() {
+  useProtectedPage();
   const [posts, setPosts] = useState([]);
   const [textArea, setTextArea] = useState('');
   const [userPost, setUserPost] = useState('');
@@ -128,7 +129,7 @@ function FeedPage() {
       <PostWriteDiv>
         <PostTitle
           name={'title'}
-          value={form.title}
+          value={postTitle}
           onChange={handlePostTitle}
           label={'title'}
           placeholder={'Título do post'}

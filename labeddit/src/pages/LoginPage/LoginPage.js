@@ -2,7 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useUnprotectedPage } from '../../hooks/useUnprotectedPage';
-import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
+import {
+  goToFeedPage,
+  goToLoginPage,
+  goToSignupPage
+} from '../../routes/coordinator';
 import useForm from '../../hooks/useForm';
 import { BASE_URL } from '../../constants/urls';
 import logo from '../../assets/logo.png';
@@ -20,20 +24,22 @@ import {
 
 function LoginPage() {
   // useUnprotectedPage();
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
-  const [form, onChange, clear] = useForm({ email: '', password: '' });
+  const [form, onChange] = useForm({ email: '', password: '' });
 
   //Function to save States on tag <form>
   const onSubmitForm = event => {
     event.preventDefault();
   };
 
-  const login = () => {
+  const login = ({ setRightButtonText }) => {
     axios
       .post(`${BASE_URL}/users/login`, form)
       .then(response => {
         localStorage.setItem('token', response.data.token);
         goToFeedPage(navigate);
+        setRightButtonText('Logout');
       })
       .catch(error => console.log(error));
   };
