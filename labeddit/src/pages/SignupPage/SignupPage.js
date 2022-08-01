@@ -28,7 +28,7 @@ function SignUpPage() {
     event.preventDefault();
   };
 
-  const SignUp = () => {
+  const SignUp = ({ setRightButtonText }) => {
     axios
       .post(`${BASE_URL}/users/signup`, form)
       .then(response => {
@@ -36,6 +36,7 @@ function SignUpPage() {
         alert('Cadastro realizado com sucesso!');
         clear();
         goToFeedPage(navigate);
+        setRightButtonText('Logout');
       })
       .catch(error => console.log(error));
   };

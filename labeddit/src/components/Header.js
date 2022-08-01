@@ -4,15 +4,31 @@ import logo from '../assets/logo.png';
 import { goToLoginPage } from '../routes/coordinator';
 import { LogoDiv, Logo, NavBar, BtnLogin } from './styledHeader';
 
-function Header() {
+function Header({ rightButtonText, setRightButtonText }) {
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem('token');
+  };
+
+  const rightButtonAction = () => {
+    if (token) {
+      logout();
+      setRightButtonText('Login');
+      goToLoginPage(navigate);
+    } else {
+      goToLoginPage(navigate);
+    }
+  };
+
   return (
     <NavBar>
       <LogoDiv>
         <Logo src={logo} onClick={() => goToLoginPage(navigate)} />
       </LogoDiv>
-      <BtnLogin src={logo} onClick={() => goToLoginPage(navigate)}>
-        Entrar
+      <BtnLogin src={logo} onClick={rightButtonAction}>
+        {rightButtonText}
       </BtnLogin>
     </NavBar>
   );

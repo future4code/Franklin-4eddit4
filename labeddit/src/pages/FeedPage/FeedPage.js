@@ -129,7 +129,7 @@ function FeedPage() {
       <PostWriteDiv>
         <PostTitle
           name={'title'}
-          value={form.title}
+          value={postTitle}
           onChange={handlePostTitle}
           label={'title'}
           placeholder={'Título do post'}
