@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useProtectedPage } from '../../hooks/useUnprotectedPage';
+import useProtectedPage from '../../hooks/useProtectedPage';
 import Header from '../../components/Header';
 import { BASE_URL } from '../../constants/urls';
 import {
@@ -26,6 +26,7 @@ import { GlobalContext } from '../../context/global/GlobalState';
 import { goBack } from '../../routes/coordinator';
 
 function PostPage() {
+  useProtectedPage();
   const [postComment, setPostComment] = useState([]); // all comments posted
   const [comments, setComments] = useState([]); // new comment
 
@@ -51,15 +52,21 @@ function PostPage() {
 
   // Create a new comment
   const createComment = () => {
+    const body = { body: comments };
     axios
-      .post(`${BASE_URL}/posts/${params.id}/comments`, {
+      .post(`${BASE_URL}/posts/${params.id}/comments`, body, {
         headers: { Authorization: token }
       })
       .then(response => {
-        setComments(response.data);
+        setComments('');
       })
       .catch(error => console.log(error));
   };
+
+  const handleChange = event => {
+    setComments(event.target.value);
+  };
+  useEffect(createComment, []);
 
   return (
     <Container>
@@ -85,7 +92,13 @@ function PostPage() {
         </CountersContainer>
       </Post>
       <PostComment>
-        <Comment rows="4" cols="50" placeholder="Adicionar comentário" />
+        <Comment
+          rows="4"
+          cols="50"
+          placeholder="Adicionar comentário"
+          value={comments}
+          onChange={handleChange}
+        />
         <BtnButton onClick={createComment}>Responder</BtnButton>
       </PostComment>
       <Divider />
