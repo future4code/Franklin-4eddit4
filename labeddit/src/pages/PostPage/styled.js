@@ -8,16 +8,23 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
+export const CloseBtn = styled.img`
+  position: absolute;
+  left: 0;
+  margin: 13px 0 13px 34px;
+`;
+
 export const Post = styled.li`
   width: 90%;
   border-radius: 12px;
   border: 1px solid #e0e0e0;
   background: #fbfbfb;
   list-style: none;
-  margin: 28px 0 10px 0;
+  margin-top: 28px;
   text-align: left;
   padding: 10px;
   box-sizing: border-box;
+  word-wrap: break-word;
 `;
 
 export const SendBy = styled.p`
@@ -47,9 +54,17 @@ export const CountersDiv = styled.div`
   gap: 10px;
 `;
 
+export const PostComment = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+`;
+
 export const Comment = styled.textarea`
   width: 90%;
-  margin-top: 30px;
+  margin-top: 12px;
   background: #ededed;
   border: none;
   border-radius: 12px;
@@ -78,6 +93,6 @@ export const CommentsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 `;

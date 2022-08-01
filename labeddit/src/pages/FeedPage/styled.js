@@ -13,8 +13,18 @@ export const PostWriteDiv = styled.div`
   margin: 0 auto;
 `;
 
+export const PostTitle = styled.input`
+  width: 100%;
+  margin: 28px 0 12px 0;
+  border-radius: 12px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: #ededed;
+  border: none;
+`;
+
 export const TextArea = styled.textarea`
-  margin-top: 30px;
   background: #ededed;
   border: none;
   border-radius: 12px;
@@ -59,6 +69,7 @@ export const Post = styled.li`
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
+  word-wrap: break-word;
 `;
 
 export const SendBy = styled.p`
