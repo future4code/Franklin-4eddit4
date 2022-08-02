@@ -14,27 +14,20 @@ senha: 1234@team
 ## O que funciona:
 - É possivel fazer o login na pagina de login
 - Se logado é possivel ver os ultimos 10 posts na pagina de feed dos posts
-- Ao clicar no balão de comentario da postagem é possivel ver os comentarios referentes aquela postagem 
-- É posível votar nas postagens
-- É possível votar nos comentários 
-- Mudança do botão com verificação prévia do Pokemon na Pokedex (Adicionar/Remover)
+- Se logado ao clicar no balão de comentario da postagem é possivel ver os comentarios referentes aquela postagem 
+- Se logado é posível votar nas postagens
+- Se logado é possível votar nos comentários 
+- Se logado é possivel fazer logout
 
 ## O que não funciona: 
 - Os itens solicitados no desafio.
 
 # Imagens:
+![signup page](https://user-images.githubusercontent.com/65312009/182278669-d3dd1320-53df-4d50-975d-988b26d015bb.png)
+![post comments page](https://user-images.githubusercontent.com/65312009/182278781-003d0885-2c4c-4de0-939f-2637116091e8.png)
+![feed page](https://user-images.githubusercontent.com/65312009/182278849-180a21de-3232-4de8-beec-e3831c81a58f.png)
+![login page](https://user-images.githubusercontent.com/65312009/182278950-f71638dc-34d7-4e96-a35d-7efa1d69001d.png)
 
 
 
-![DetailsPrint](https://user-images.githubusercontent.com/79777131/179876273-7abfd519-d057-4d1a-af5a-9903d84dab24.png)
--------------------------------------------------------------------------------------------------------------------------
-![HomePrint](https://user-images.githubusercontent.com/79777131/179876285-14f949fd-1ef3-4637-be2d-4fe706d20a7d.png)
--------------------------------------------------------------------------------------------------------------------------
-![PokedexPrint](https://user-images.githubusercontent.com/79777131/179876290-9a62edd6-ecf4-4943-b454-3b90cfbef11b.png)
-
-
-### Aternativas de estilo descartadas
-
-![image](https://user-images.githubusercontent.com/65312009/179972425-f53b1f79-2424-40da-9adb-62308458b152.png)
-![image](https://user-images.githubusercontent.com/65312009/179972542-17376fd2-29dc-4ca9-b563-690a081849f0.png)
 
