@@ -13,11 +13,14 @@ senha: 1234@team
 
 ## O que funciona:
 - É possivel fazer o login na pagina de login
-- Se logado é possivel ver os ultimos 10 posts na pagina de feed dos posts
-- Se logado ao clicar no balão de comentario da postagem é possivel ver os comentarios referentes aquela postagem 
+- Se logado é possivel ver os últimos 10 posts na pagina de feed dos posts
+- Se logado ao clicar no balão de comentário da postagem é possivel ver os comentários referentes aquela postagem 
 - Se logado é posível votar nas postagens
 - Se logado é possível votar nos comentários 
 - Se logado é possivel fazer logout
+- Os testes de requisição no login
+- Os testes de resquisição no signup
+- O teste da renderização do app
 
 ## O que não funciona: 
 - Os itens solicitados no desafio.
