@@ -7,7 +7,7 @@
 - Nicole Rafaella Vieira Peiker
 - Raylane Nara Correa Sousa
 
-Link do Surge: [angry-eggs.surge.sh](angry-eggs.surge.sh)
+Link do Surge: [http://angry-eggs.surge.sh](http://angry-eggs.surge.sh)
 email: team@gmail.com
 senha: 1234@team
 
