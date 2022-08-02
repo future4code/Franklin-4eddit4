@@ -82,7 +82,7 @@ function FeedPage() {
       </PostWriteDiv>
       {posts.map(post => {
         return (
-          <PostCard post={post} />
+          <PostCard key={post.id} post={post} />
         );
       })}
     </Container>

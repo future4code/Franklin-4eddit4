@@ -85,7 +85,7 @@ function PostPage() {
       <CommentsContainer>
         {postComment.map(comment => {
           return (
-            <CommentCard comment={comment}/>
+            <CommentCard key={comment.id} comment={comment}/>
           );
         })}
       </CommentsContainer>

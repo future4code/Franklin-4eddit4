@@ -56,7 +56,7 @@ const PostCard = ({ post }) => {
 
     return (
         <PostContainer>
-            <Post key={post.id}>
+            <Post>
                 <SendBy>Enviado por: {post.username}</SendBy>
                 <BodyPost> {post.body} </BodyPost>
                 <CountersContainer>
