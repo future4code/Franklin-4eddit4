@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png';
-import { goToLoginPage } from '../routes/coordinator';
+import logo from '../../assets/logo.png';
+import { goToLoginPage } from '../../routes/coordinator';
 import { LogoDiv, Logo, NavBar, BtnLogin } from './styledHeader';
 
 function Header({ rightButtonText }) {

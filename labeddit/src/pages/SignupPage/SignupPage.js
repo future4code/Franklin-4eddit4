@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useUnprotectedPage } from '../../hooks/useUnprotectedPage';
-import Header from '../../components/Header';
+import Header from '../../components/Header/Header';
 import {
   Container,
   Title,
