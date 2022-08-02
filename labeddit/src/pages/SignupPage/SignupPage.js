@@ -43,7 +43,7 @@ function SignUpPage() {
 
   return (
     <Container>
-      <Header />
+      <Header rightButtonText={"Entrar"} />
       <Title>Olá, boas vindas ao LabEddit ;)</Title>
       <Form onSubmit={onSubmitForm}>
         <InputArea

@@ -70,7 +70,7 @@ function PostPage() {
 
   return (
     <Container>
-      <Header />
+      <Header rightButtonText={"Logout"} />
       <CloseBtn
         src={closeButton}
         alt="close button"

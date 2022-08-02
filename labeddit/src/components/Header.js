@@ -4,7 +4,7 @@ import logo from '../assets/logo.png';
 import { goToLoginPage } from '../routes/coordinator';
 import { LogoDiv, Logo, NavBar, BtnLogin } from './styledHeader';
 
-function Header({ rightButtonText, setRightButtonText }) {
+function Header({ rightButtonText }) {
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
 
@@ -15,7 +15,6 @@ function Header({ rightButtonText, setRightButtonText }) {
   const rightButtonAction = () => {
     if (token) {
       logout();
-      setRightButtonText('Login');
       goToLoginPage(navigate);
     } else {
       goToLoginPage(navigate);

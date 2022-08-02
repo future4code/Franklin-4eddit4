@@ -30,4 +30,7 @@ export const BtnLogin = styled.button`
   right: 0;
   height: 50px;
   padding-right: 29px;
+  text-transform: capitalize;
+  font-weight: bold;
+  text-decoration: none;
 `;

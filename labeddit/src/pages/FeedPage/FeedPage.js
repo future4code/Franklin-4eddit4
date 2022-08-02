@@ -124,7 +124,7 @@ function FeedPage() {
 
   return (
     <Container>
-      <Header />
+      <Header rightButtonText={"Logout"}/>
 
       <PostWriteDiv>
         <PostTitle
